@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol UIAnimatedSearchBarDelegate
+@objc public protocol UIAnimatedSearchBarDelegate
 {
     @objc optional func searchBar(_ searchBar: UIAnimatedSearchBar, textDidChange searchText: String)
 
@@ -34,13 +34,13 @@ import UIKit
 }
 
 
-@IBDesignable
-class UIAnimatedSearchBar: UIView
+//@IBDesignable
+public class UIAnimatedSearchBar: UIView
 {
     //MARK: Exposed Properties
-    weak var delegate: UIAnimatedSearchBarDelegate?
+    public weak var delegate: UIAnimatedSearchBarDelegate?
     
-    var placeholder: String?
+    public var placeholder: String?
     {
         get
         {
@@ -52,7 +52,7 @@ class UIAnimatedSearchBar: UIView
         }
     }
     
-    var text: String?
+    public var text: String?
     {
         get
         {
@@ -64,7 +64,7 @@ class UIAnimatedSearchBar: UIView
         }
     }
 
-    var barTintColor: UIColor = Constants.defaultBackgroundColor
+    public var barTintColor: UIColor = Constants.defaultBackgroundColor
     {
         didSet
         {
@@ -72,7 +72,7 @@ class UIAnimatedSearchBar: UIView
         }
     }
     
-    override var tintColor: UIColor!
+    override public var tintColor: UIColor!
     {
         didSet
         {
@@ -83,7 +83,7 @@ class UIAnimatedSearchBar: UIView
         }
     }
 
-    var showBookmarkButton: Bool
+    public var showBookmarkButton: Bool
     {
         get
         {
@@ -107,7 +107,7 @@ class UIAnimatedSearchBar: UIView
         }
     }
     
-    var showsCancelButton: Bool
+    public var showsCancelButton: Bool
     {
         get {
             return cancelButtonIsVisible
@@ -117,7 +117,7 @@ class UIAnimatedSearchBar: UIView
         }
     }
     
-    var animationSpeed: Double?
+    public var animationSpeed: Double?
     {
         didSet
         {
@@ -127,7 +127,7 @@ class UIAnimatedSearchBar: UIView
     
     //MARK: Exposed Functions
     
-    func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool)
+    public func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool)
     {
         if showsCancelButton
         {
@@ -207,7 +207,7 @@ class UIAnimatedSearchBar: UIView
     
     //MARK: Class Initializers
     
-    override init(frame: CGRect)
+    public override init(frame: CGRect)
     {
         searchWindow = SearchBackgroundView(color: Constants.defaultBackgroundColor)
         searchTextField = UITextField()
@@ -217,7 +217,7 @@ class UIAnimatedSearchBar: UIView
         setupSearchBarLayout()
     }
     
-    required init?(coder aDecoder: NSCoder)
+    public required init?(coder aDecoder: NSCoder)
     {
         searchWindow = SearchBackgroundView(color: Constants.defaultBackgroundColor)
         searchTextField = UITextField()
@@ -347,12 +347,12 @@ class UIAnimatedSearchBar: UIView
 
 extension UIAnimatedSearchBar: UITextFieldDelegate
 {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         return delegate?.searchBar?(self, shouldChangeTextIn: range, replacementText: string) ?? true
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
         switch animatedIcon.currentState
         {
@@ -379,12 +379,12 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.searchBarTextDidBeginEditing?(self)
         cancelButton?.isEnabled = true
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool
     {
         if let shouldEndEditing = delegate?.searchBarShouldEndEditing?(self)
         {
@@ -397,7 +397,7 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField)
+    public func textFieldDidEndEditing(_ textField: UITextField)
     {
         
         delegate?.searchBarTextDidEndEditing?(self)
@@ -411,7 +411,7 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.searchBarSearchButtonClicked?(self)
         return true
     }
