@@ -34,7 +34,7 @@ import UIKit
 }
 
 
-//@IBDesignable
+@IBDesignable
 public class UIAnimatedSearchBar: UIView
 {
     //MARK: Exposed Properties
@@ -94,9 +94,11 @@ public class UIAnimatedSearchBar: UIView
         {
             if newValue
             {
+                let animatedSearchBarBundle = Bundle(for: UIAnimatedSearchBar.self)
+                print(animatedSearchBarBundle)
                 let button = UIButton(type: UIButtonType.system)
                 button.frame = CGRect(x: 0, y: 0, width: 21, height: 21)
-                let image = UIImage(named: "bookmarkIcon")?.withRenderingMode(.alwaysTemplate)
+                let image = UIImage(named: "bookmarkIcon", in: animatedSearchBarBundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
                 button.setImage(image, for: .normal)
                 button.addTarget(self, action: #selector(bookmarkButtonClicked), for: UIControlEvents.touchUpInside)
                 searchTextField.rightView = button
@@ -212,7 +214,7 @@ public class UIAnimatedSearchBar: UIView
         searchWindow = SearchBackgroundView(color: Constants.defaultBackgroundColor)
         searchTextField = UITextField()
         animatedIcon = GlassCursor(color: .black)
-        savedCursorConstraintConstant = 0.0
+        savedCursorConstraintConstant = Constants.iconXOffsetFromCursorOriginX
         super.init(frame: frame)
         setupSearchBarLayout()
     }
@@ -222,7 +224,7 @@ public class UIAnimatedSearchBar: UIView
         searchWindow = SearchBackgroundView(color: Constants.defaultBackgroundColor)
         searchTextField = UITextField()
         animatedIcon = GlassCursor(color: .black)
-        savedCursorConstraintConstant = 0.0
+        savedCursorConstraintConstant = Constants.iconXOffsetFromCursorOriginX
         super.init(coder: aDecoder)
         setupSearchBarLayout()
     }
@@ -285,7 +287,7 @@ public class UIAnimatedSearchBar: UIView
         
         animatedIcon.currentState = .glass
         animatedIcon.attachedTextField = searchTextField
-        print(tintColor)
+        //print(tintColor)
         animatedIcon.color = searchTextField.tintColor.withAlphaComponent(0.95)
         animatedIcon.isUserInteractionEnabled = false
 
@@ -439,8 +441,8 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
     
     private func findViewLayerFour(_ view: UIView, depth: Int = 0) -> UIView?
     {
-        print(depth)
-        print(view.frame)
+        //print(depth)
+        //print(view.frame)
         if !view.subviews.isEmpty
         {
             for view in view.subviews

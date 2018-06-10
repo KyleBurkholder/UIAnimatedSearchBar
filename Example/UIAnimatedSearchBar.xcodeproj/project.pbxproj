@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02B8926520CD8D33004B663B /* UIAnimatedSearchBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B8926420CD8D33004B663B /* UIAnimatedSearchBar.framework */; };
-		02B8926620CD8D33004B663B /* UIAnimatedSearchBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 02B8926420CD8D33004B663B /* UIAnimatedSearchBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -29,22 +27,7 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		02B8926320CD8B6D004B663B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				02B8926620CD8D33004B663B /* UIAnimatedSearchBar.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		02B8926420CD8D33004B663B /* UIAnimatedSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIAnimatedSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13051040C83E536EAE748263 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		15D20D62FB80EDEEDA320958 /* Pods_UIAnimatedSearchBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIAnimatedSearchBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BE7285B0353B2740D03427 /* Pods_UIAnimatedSearchBar_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIAnimatedSearchBar_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +55,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4FF003D39B154A2FF6281D1 /* Pods_UIAnimatedSearchBar_Example.framework in Frameworks */,
-				02B8926520CD8D33004B663B /* UIAnimatedSearchBar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +81,6 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				02B8926420CD8D33004B663B /* UIAnimatedSearchBar.framework */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for UIAnimatedSearchBar */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -190,7 +171,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				48DF5A6697463F0D44B462F2 /* [CP] Embed Pods Frameworks */,
-				02B8926320CD8B6D004B663B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
