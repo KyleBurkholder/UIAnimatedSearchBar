@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		025C5BE720D33C6200257F7D /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D5EBD420D33919001C93CF /* Tests.swift */; };
+		0273B3BF20E954C400E152DC /* KIFExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273B3BD20E9545C00E152DC /* KIFExtentions.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* Example_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Example_Tests.swift */; };
 		94158D95C22FA44368BAE5FF /* Pods_UIAnimatedSearchBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D20D62FB80EDEEDA320958 /* Pods_UIAnimatedSearchBar_Tests.framework */; };
 		B4FF003D39B154A2FF6281D1 /* Pods_UIAnimatedSearchBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BE7285B0353B2740D03427 /* Pods_UIAnimatedSearchBar_Example.framework */; };
+		E82667566A045ACCDA2B839E /* Pods_UIAnimatedSearchBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029F633620DCA23C00487AEE /* Pods_UIAnimatedSearchBar_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +31,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0273B3BB20E94DD500E152DC /* UIAnimatedSearch_Tests-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAnimatedSearch_Tests-Swift.h"; sourceTree = "<group>"; };
+		0273B3BD20E9545C00E152DC /* KIFExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KIFExtentions.swift; sourceTree = "<group>"; };
+		029F633620DCA23C00487AEE /* Pods_UIAnimatedSearchBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UIAnimatedSearchBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02D5EBD420D33919001C93CF /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		02EF169C20DCA0A90096F804 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02EF169E20DCA0A90096F804 /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02EF16A020DCA0A90096F804 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02EF16A220DCA0A90096F804 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02EF16A420DCA0A90096F804 /* UIAnimatedSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIAnimatedSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13051040C83E536EAE748263 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		15D20D62FB80EDEEDA320958 /* Pods_UIAnimatedSearchBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIAnimatedSearchBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17BE9F672B1B828246F01A01 /* Pods_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BE7285B0353B2740D03427 /* Pods_UIAnimatedSearchBar_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIAnimatedSearchBar_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25BCC68E8D7B6B8A00A1F931 /* Pods-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UITests/Pods-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DEE58E1DA21334CAFA6BD03 /* Pods-UIAnimatedSearchBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIAnimatedSearchBar_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIAnimatedSearchBar_Example/Pods-UIAnimatedSearchBar_Example.release.xcconfig"; sourceTree = "<group>"; };
 		3041E8D084C21A058FE43A55 /* Pods-UIAnimatedSearchBar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIAnimatedSearchBar_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIAnimatedSearchBar_Tests/Pods-UIAnimatedSearchBar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A496667D1D00A1F6DB864C1 /* UIAnimatedSearchBar.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = UIAnimatedSearchBar.podspec; path = ../UIAnimatedSearchBar.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -43,10 +57,11 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* UIAnimatedSearchBar_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIAnimatedSearchBar_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* Example_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_Tests.swift; sourceTree = "<group>"; };
 		84564643B4C010B9CC79C30D /* Pods-UIAnimatedSearchBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIAnimatedSearchBar_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIAnimatedSearchBar_Tests/Pods-UIAnimatedSearchBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B2F188EA772E73A80BED6CD6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B5659D3CAB1103F8CEBE421C /* Pods-UIAnimatedSearchBar_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIAnimatedSearchBar_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIAnimatedSearchBar_Example/Pods-UIAnimatedSearchBar_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		DA500DB34C54103F609FB943 /* Pods-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UITests/Pods-UITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94158D95C22FA44368BAE5FF /* Pods_UIAnimatedSearchBar_Tests.framework in Frameworks */,
+				E82667566A045ACCDA2B839E /* Pods_UIAnimatedSearchBar_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +88,15 @@
 		589BA4540ACB2596FE4979BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				029F633620DCA23C00487AEE /* Pods_UIAnimatedSearchBar_Tests.framework */,
+				02EF169C20DCA0A90096F804 /* FBSnapshotTestCase.framework */,
+				02EF169E20DCA0A90096F804 /* Nimble_Snapshots.framework */,
+				02EF16A020DCA0A90096F804 /* Nimble.framework */,
+				02EF16A220DCA0A90096F804 /* Quick.framework */,
+				02EF16A420DCA0A90096F804 /* UIAnimatedSearchBar.framework */,
 				18BE7285B0353B2740D03427 /* Pods_UIAnimatedSearchBar_Example.framework */,
 				15D20D62FB80EDEEDA320958 /* Pods_UIAnimatedSearchBar_Tests.framework */,
+				17BE9F672B1B828246F01A01 /* Pods_UITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,8 +147,11 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* Example_Tests.swift */,
+				02D5EBD420D33919001C93CF /* Tests.swift */,
+				0273B3BB20E94DD500E152DC /* UIAnimatedSearch_Tests-Swift.h */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				0273B3BD20E9545C00E152DC /* KIFExtentions.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -155,6 +181,8 @@
 				2DEE58E1DA21334CAFA6BD03 /* Pods-UIAnimatedSearchBar_Example.release.xcconfig */,
 				3041E8D084C21A058FE43A55 /* Pods-UIAnimatedSearchBar_Tests.debug.xcconfig */,
 				84564643B4C010B9CC79C30D /* Pods-UIAnimatedSearchBar_Tests.release.xcconfig */,
+				25BCC68E8D7B6B8A00A1F931 /* Pods-UITests.debug.xcconfig */,
+				DA500DB34C54103F609FB943 /* Pods-UITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -207,7 +235,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -272,6 +300,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-UIAnimatedSearchBar_Tests/Pods-UIAnimatedSearchBar_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${BUILT_PRODUCTS_DIR}/KIF/KIF.framework",
+				"${BUILT_PRODUCTS_DIR}/KIF-Quick/KIF_Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
@@ -279,6 +309,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KIF.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KIF_Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
@@ -358,7 +390,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				0273B3BF20E954C400E152DC /* KIFExtentions.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* Example_Tests.swift in Sources */,
+				025C5BE720D33C6200257F7D /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +454,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -473,6 +508,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -529,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3041E8D084C21A058FE43A55 /* Pods-UIAnimatedSearchBar_Tests.debug.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 69AM28P28S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -542,8 +579,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/UIAnimatedSearch_Tests-Swift.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIAnimatedSearchBar_Example.app/UIAnimatedSearchBar_Example";
 			};
 			name = Debug;
 		};
@@ -551,6 +590,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84564643B4C010B9CC79C30D /* Pods-UIAnimatedSearchBar_Tests.release.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 69AM28P28S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -560,8 +600,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/UIAnimatedSearch_Tests-Swift.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIAnimatedSearchBar_Example.app/UIAnimatedSearchBar_Example";
 			};
 			name = Release;
 		};

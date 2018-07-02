@@ -109,6 +109,11 @@ public class UIAnimatedSearchBar: UIView
         }
     }
     
+    public var bookmarkButton: UIButton?
+    {
+        return searchTextField.rightView as? UIButton
+    }
+    
     public var showsCancelButton: Bool
     {
         get {
@@ -119,12 +124,25 @@ public class UIAnimatedSearchBar: UIView
         }
     }
     
+    public var cancelButton: UIButton?
+    
     public var animationSpeed: Double?
     {
         didSet
         {
             animatedIcon.animationSpeed = animationSpeed! / 2.0
         }
+    }
+    
+    override public var canBecomeFirstResponder: Bool
+    {
+        return searchTextField.canBecomeFirstResponder
+        
+    }
+    
+    public override var isFirstResponder: Bool
+    {
+        return searchTextField.isFirstResponder
     }
     
     //MARK: Exposed Functions
@@ -162,6 +180,22 @@ public class UIAnimatedSearchBar: UIView
         }
     }
     
+    public func pressReturn()
+    {
+        let _ = searchTextField.delegate?.textFieldShouldReturn?(searchTextField)
+    }    
+    override public func becomeFirstResponder() -> Bool
+    {
+        print("becomeFirstResponder called")
+        return searchTextField.becomeFirstResponder()
+    }
+    
+    override public func resignFirstResponder() -> Bool
+    {
+        print("resignFirstResponder called")
+        return searchTextField.resignFirstResponder()
+    }
+    
     //MARK: Class Private Variables
     
     private var searchWindow: SearchBackgroundView
@@ -169,8 +203,6 @@ public class UIAnimatedSearchBar: UIView
     private var searchTextField: UITextField
     
     private var animatedIcon: GlassCursor
-    
-    private var cancelButton: UIButton?
     
     private var iconXConstraint: NSLayoutConstraint?
     
@@ -181,6 +213,8 @@ public class UIAnimatedSearchBar: UIView
     private var cancelButtonTrailingConstraint: NSLayoutConstraint?
     
     private var savedCursorConstraintConstant: CGFloat
+    
+    private var CursorConstraintOutOfDate = false
     
     private var cancelButtonIsVisible: Bool = false
     
@@ -239,6 +273,8 @@ public class UIAnimatedSearchBar: UIView
         
         setupAnimatedIcon(animatedIcon, toView: searchTextField)
         
+        self.accessibilityLabel = "UIAnimatedSearchBar"
+        
     }
     
     private func setupSearchWindow(_ searchWindow: UIView)
@@ -267,9 +303,10 @@ public class UIAnimatedSearchBar: UIView
         searchTextField.autocorrectionType = .no
         searchTextField.clearButtonMode = .whileEditing
         searchTextField.rightViewMode = .unlessEditing
+        searchTextField.accessibilityLabel = "searchTextField"
         searchTextField.font = Constants.fontMetric.scaledFont(for: Constants.systemFontLargeButton)
         searchTextField.adjustsFontForContentSizeCategory = true
-        searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        searchTextField.addTarget(self, action: #selector(textFieldWillChange(_:)), for: UIControlEvents.editingChanged)
         
         //let textHeight = NSLayoutConstraint(item: searchTextField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 21.0)
         let textLeading = NSLayoutConstraint(item: searchWindow, attribute: .leading, relatedBy: .equal, toItem: searchTextField, attribute: .leading, multiplier: 1.0, constant: Constants.textFieldLeadingConstantNotEditing)
@@ -330,7 +367,7 @@ public class UIAnimatedSearchBar: UIView
     
     //MARK: Private Functions
     
-    @objc private func textFieldDidChange(_ textField: UITextField)
+    @objc private func textFieldWillChange(_ textField: UITextField)
     {
         delegate?.searchBar?(self, textDidChange: textField.text ?? "")
     }
@@ -342,9 +379,9 @@ public class UIAnimatedSearchBar: UIView
     
     @objc private func cancelButtonClicked()
     {
+        CursorConstraintOutOfDate = false
         delegate?.searchBarCancelButtonClicked?(self)
     }
-    
 }
 
 extension UIAnimatedSearchBar: UITextFieldDelegate
@@ -367,7 +404,7 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
                 }
             }
             animatedIcon.rotateToCursor()
-            iconXConstraint?.constant = savedCursorConstraintConstant
+            iconXConstraint?.constant = CGFloat(textField.caretRect(for: textField.endOfDocument).origin.x) + Constants.iconXOffsetFromCursorOriginX
             textFieldXConstraint?.constant = Constants.textFieldLeadingConstantEditing
             UIView.animate(withDuration: animationSpeed ?? Constants.defaultAnimationSpeed)
             {
@@ -395,13 +432,12 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
                 return false
             }
         }
-        moveIconForReveal()
+        moveIconForReveal(for: textField)
         return true
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField)
     {
-        
         delegate?.searchBarTextDidEndEditing?(self)
         animatedIcon.rotateToGlass()
         iconXConstraint?.constant = Constants.iconXConstantNotEditing
@@ -418,48 +454,13 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
         return true
     }
     
-    //MARK: Supporting methods to position icon on cursor
+    //MARK: Supporting method to position icon on cursor
     
-    private func moveIconForReveal()
+    private func moveIconForReveal(for textField: UITextField)
     {
-        savedCursorConstraintConstant = outputTextFieldCursorX(searchTextField) + Constants.iconXOffsetFromCursorOriginX
-        iconXConstraint?.constant = savedCursorConstraintConstant
+        iconXConstraint?.constant = CGFloat(textField.caretRect(for: textField.selectedTextRange!.end).origin.x) + Constants.iconXOffsetFromCursorOriginX
         searchTextField.rightViewMode = .always
         self.layoutIfNeeded()
         searchTextField.rightViewMode = .unlessEditing
-    }
-    
-    private func outputTextFieldCursorX(_ textField: UITextField) -> CGFloat
-    {
-        let cursorView = findViewLayerFour(textField)
-        if let view = cursorView
-        {
-        return view.convert(view.bounds.origin, to: searchTextField).x
-        }
-        return 0.0
-    }
-    
-    private func findViewLayerFour(_ view: UIView, depth: Int = 0) -> UIView?
-    {
-        //print(depth)
-        //print(view.frame)
-        if !view.subviews.isEmpty
-        {
-            for view in view.subviews
-            {
-                if findViewLayerFour(view, depth: depth + 1) == nil
-                {
-                    continue
-                }
-                return findViewLayerFour(view, depth: depth + 1)
-            }
-        }
-        if depth == 4
-        {
-            return view
-        } else
-        {
-            return nil
-        }
     }
 }
