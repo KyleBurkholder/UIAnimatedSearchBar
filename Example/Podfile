@@ -14,30 +14,12 @@ target 'UIAnimatedSearchBar_Example' do
     pod 'KIF-Quick'
   end
 
-#  target 'UITests' do
-#    inherit! :search_paths
-#
-#    pod 'Quick', '~> 1.2.0'
-#    pod 'Nimble', '~> 7.0.2'
-#    pod 'FBSnapshotTestCase' , '~> 2.1.4'
-#    pod 'Nimble-Snapshots' , '~> 6.3.0'
-#  end
-
 # Workaround for Cocoapods v.1.5 issue #7606
 post_install do |installer|
     installer.pods_project.build_configurations.each do |config|
         config.build_settings.delete('CODE_SIGNING_ALLOWED')
         config.build_settings.delete('CODE_SIGNING_REQUIRED')
     end
-# Manually making Quick compiler version be swift 3.2
-    installer.pods_project.targets.each do |target|
-      if target.name == 'Quick'
-        print "Changing Quick swift version to 3.2\n"
-        target.build_configurations.each do |config|
-          config.build_settings['SWIFT_VERSION'] = '3.3'
-        end
-      end
-    end
-  end
+end
 
 end

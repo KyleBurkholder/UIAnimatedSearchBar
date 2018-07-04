@@ -11,12 +11,13 @@ class ViewControllerSpec: KIFSpec
 {
     override func spec()
     {
-        var sut: ViewController!
+        var sut: AnimatedSearchBarViewController!
         
         beforeEach
             {
+                //Setup for AnimatedSearchBarViewController from IB
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                sut = storyboard.instantiateViewController(withIdentifier: "BasicTestViewController") as! ViewController
+                sut = storyboard.instantiateViewController(withIdentifier: "BasicTestViewController") as! AnimatedSearchBarViewController
                 UIApplication.shared.keyWindow!.rootViewController = sut
                 let _ = sut.view
         }
@@ -119,19 +120,46 @@ class ViewControllerSpec: KIFSpec
             }
         }
         
-        describe("Additional search bar function")
+        describe("Customization")
         {
+
             it("Cancel button shows")
             {
                 sut.animatedSearchBar.showsCancelButton = true
-                expect(sut.animatedSearchBar) == snapshot()
+//                expect(sut.animatedSearchBar).to(recordDeviceAgnosticSnapshot())
+                expect(sut.animatedSearchBar).to(haveValidDeviceAgnosticSnapshot())
             }
             
             it("Bookmark button shows")
             {
                 sut.animatedSearchBar.showBookmarkButton = true
-                //tester().tapView(withAccessibilityLabel: "UIAnimatedSearchBar")
-                expect(sut.animatedSearchBar) == snapshot()
+//                expect(sut.animatedSearchBar).to(recordDeviceAgnosticSnapshot())
+                expect(sut.animatedSearchBar).to(haveValidDeviceAgnosticSnapshot())
+            }
+            it("tintColor works")
+            {
+                sut.animatedSearchBar.tintColor = .orange
+//                expect(sut.animatedSearchBar).to(recordDeviceAgnosticSnapshot())
+                expect(sut.animatedSearchBar).to(haveValidDeviceAgnosticSnapshot())
+            }
+            it("barTintColor works")
+            {
+                sut.animatedSearchBar.barTintColor = .blue
+                sut.animatedSearchBar.tintColor = .orange
+//                expect(sut.animatedSearchBar).to(recordDeviceAgnosticSnapshot())
+                expect(sut.animatedSearchBar).to(haveValidDeviceAgnosticSnapshot())
+            }
+            it("backgroundColor works")
+            {
+                sut.animatedSearchBar.backgroundColor = .blue
+//                expect(sut.animatedSearchBar).to(recordDeviceAgnosticSnapshot())
+                expect(sut.animatedSearchBar).to(haveValidDeviceAgnosticSnapshot())
+            }
+            it("placeholder text works")
+            {
+                sut.animatedSearchBar.placeholder = "Sweet Placeholder Text"
+//                expect(sut.animatedSearchBar).to(recordDeviceAgnosticSnapshot())
+                expect(sut.animatedSearchBar).to(haveValidDeviceAgnosticSnapshot())
             }
         }
     }

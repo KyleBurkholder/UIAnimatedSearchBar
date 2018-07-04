@@ -226,9 +226,9 @@ public class UIAnimatedSearchBar: UIView
         
         static let textFieldLeadingConstantEditing: CGFloat = -15.0
         
-        static let textFieldLeadingConstantNotEditing: CGFloat = -23.0
+        static let textFieldLeadingConstantNotEditing: CGFloat = -25.0 //Was -23.0
         
-        static let iconXConstantNotEditing: CGFloat = -7.0
+        static let iconXConstantNotEditing: CGFloat = -9.0 //Was -7.0
         
         static let iconXOffsetFromCursorOriginX: CGFloat = 1.0
         

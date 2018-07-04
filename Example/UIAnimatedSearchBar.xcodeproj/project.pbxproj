@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		025C5BE720D33C6200257F7D /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D5EBD420D33919001C93CF /* Tests.swift */; };
-		0273B3BF20E954C400E152DC /* KIFExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273B3BD20E9545C00E152DC /* KIFExtentions.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* AnimatedSearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* AnimatedSearchBarViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Example_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Example_Tests.swift */; };
 		94158D95C22FA44368BAE5FF /* Pods_UIAnimatedSearchBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D20D62FB80EDEEDA320958 /* Pods_UIAnimatedSearchBar_Tests.framework */; };
 		B4FF003D39B154A2FF6281D1 /* Pods_UIAnimatedSearchBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BE7285B0353B2740D03427 /* Pods_UIAnimatedSearchBar_Example.framework */; };
 		E82667566A045ACCDA2B839E /* Pods_UIAnimatedSearchBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029F633620DCA23C00487AEE /* Pods_UIAnimatedSearchBar_Tests.framework */; };
@@ -32,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		0273B3BB20E94DD500E152DC /* UIAnimatedSearch_Tests-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAnimatedSearch_Tests-Swift.h"; sourceTree = "<group>"; };
-		0273B3BD20E9545C00E152DC /* KIFExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KIFExtentions.swift; sourceTree = "<group>"; };
 		029F633620DCA23C00487AEE /* Pods_UIAnimatedSearchBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UIAnimatedSearchBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D5EBD420D33919001C93CF /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		02EF169C20DCA0A90096F804 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,13 +48,12 @@
 		607FACD01AFB9204008FA782 /* UIAnimatedSearchBar_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIAnimatedSearchBar_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* AnimatedSearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedSearchBarViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* UIAnimatedSearchBar_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIAnimatedSearchBar_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Example_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_Tests.swift; sourceTree = "<group>"; };
 		84564643B4C010B9CC79C30D /* Pods-UIAnimatedSearchBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIAnimatedSearchBar_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIAnimatedSearchBar_Tests/Pods-UIAnimatedSearchBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B2F188EA772E73A80BED6CD6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B5659D3CAB1103F8CEBE421C /* Pods-UIAnimatedSearchBar_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIAnimatedSearchBar_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIAnimatedSearchBar_Example/Pods-UIAnimatedSearchBar_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				607FACD71AFB9204008FA782 /* AnimatedSearchBarViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -147,11 +143,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Example_Tests.swift */,
 				02D5EBD420D33919001C93CF /* Tests.swift */,
 				0273B3BB20E94DD500E152DC /* UIAnimatedSearch_Tests-Swift.h */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
-				0273B3BD20E9545C00E152DC /* KIFExtentions.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -381,7 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* AnimatedSearchBarViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,8 +384,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0273B3BF20E954C400E152DC /* KIFExtentions.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* Example_Tests.swift in Sources */,
 				025C5BE720D33C6200257F7D /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@
 import UIKit
 import UIAnimatedSearchBar
 
-class ViewController: UIViewController
+class AnimatedSearchBarViewController: UIViewController
 {
     @IBOutlet var animatedSearchBar: UIAnimatedSearchBar!
     
@@ -19,12 +19,7 @@ class ViewController: UIViewController
         animatedSearchBar.delegate = self
     }
     
-    
-    
-    override func viewDidAppear(_ animated: Bool)
-    {
-        
-    }
+    //MARK: Delegate Test Bools
     
     var searchBarTextDidChangeWasCalled = false
     var searchBarShouldChangeTextInWasCalled = false
@@ -37,7 +32,7 @@ class ViewController: UIViewController
     var searchBarSearchButtonClickedWasCalled = false
 }
 
-extension ViewController: UIAnimatedSearchBarDelegate
+extension AnimatedSearchBarViewController: UIAnimatedSearchBarDelegate
 {
     func searchBar(_ searchBar: UIAnimatedSearchBar, textDidChange searchText: String)
     {
