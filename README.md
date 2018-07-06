@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/UIAnimatedSearchBar.svg?style=flat)](https://cocoapods.org/pods/UIAnimatedSearchBar)
 [![License](https://img.shields.io/cocoapods/l/UIAnimatedSearchBar.svg?style=flat)](https://cocoapods.org/pods/UIAnimatedSearchBar)
 [![Platform](https://img.shields.io/cocoapods/p/UIAnimatedSearchBar.svg?style=flat)](https://cocoapods.org/pods/UIAnimatedSearchBar)
+
 ## Description
 
 The UIAnimatedSearchBar is similar to the standard UISearchBar but with the added animation of the search glass. I have tried to add the same functionality that UISearchBar comes with. The cancel button and the bookmark button can both be added just like UISearchBar. Additionally there is a UIAnimatedSearchBarDelegate that mirrors the same functionality that UISearchBarDelegate offers.
