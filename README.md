@@ -31,10 +31,10 @@ At the end of the podfile add this post_install to allow the @IBDesignable aspec
 ```ruby
 # Workaround for Cocoapods v.1.5 issue #7606
 post_install do |installer|
-installer.pods_project.build_configurations.each do |config|
-config.build_settings.delete('CODE_SIGNING_ALLOWED')
-config.build_settings.delete('CODE_SIGNING_REQUIRED')
-end
+    installer.pods_project.build_configurations.each do |config|
+        config.build_settings.delete('CODE_SIGNING_ALLOWED')
+        config.build_settings.delete('CODE_SIGNING_REQUIRED')
+    end
 end
 ```
 
