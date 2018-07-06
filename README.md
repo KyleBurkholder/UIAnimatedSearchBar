@@ -29,7 +29,7 @@ pod 'UIAnimatedSearchBar'
 
 Kyle Burkholder  
 Email: kburkho@gmail.com  
-Twitter: _KyleBurkholder  
+Twitter: [_KyleBurkholder](https://twitter.com/_KyleBurkholder)  
 Follow me on Twitter. I'd love to see what other ios developers are working on.
 
 ## Donation?
