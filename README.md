@@ -29,9 +29,12 @@ pod 'UIAnimatedSearchBar'
 
 Kyle Burkholder  
 Email: kburkho@gmail.com  
-Twitter: _KyleBurkholder
+Twitter: _KyleBurkholder  
+Follow me on Twitter. I'd love to see what other ios developers are working on.
 
-## Donations
+## Donation?
+
+I'm a self taught ios programmer and if you want to see more things like this feel free to buy me a cup of coffee, or two. ;)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GACPM42EKYZDU)
 
