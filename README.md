@@ -27,8 +27,8 @@ pod 'UIAnimatedSearchBar'
 
 ## Author
 
-Kyle Burkholder
-Email: kburkho@gmail.com
+Kyle Burkholder  
+Email: kburkho@gmail.com  
 Twitter: _KyleBurkholder
 
 ## License
