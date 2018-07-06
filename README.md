@@ -31,6 +31,10 @@ Kyle Burkholder
 Email: kburkho@gmail.com  
 Twitter: _KyleBurkholder
 
+## Donations
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GACPM42EKYZDU)
+
 ## License
 
 UIAnimatedSearchBar is available under the MIT license. See the LICENSE file for more info.
