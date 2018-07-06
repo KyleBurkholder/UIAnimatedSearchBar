@@ -26,7 +26,7 @@ it, simply add the following line to your Podfile:
 pod 'UIAnimatedSearchBar'
 ```
 
-At the end of the podfile add this post_install to allow the @IBDesignable aspect of the UIAnimatedSearchBar to work
+At the end of the podfile add this post_install to allow the @IBDesignable aspect of the UIAnimatedSearchBar to work:
 
 ```ruby
 # Workaround for Cocoapods v.1.5 issue #7606
