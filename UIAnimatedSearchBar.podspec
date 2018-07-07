@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UIAnimatedSearchBar'
-  s.version          = '0.1.0'
+  s.version          = '0.0.1'
   s.summary          = 'UIAnimatedSearchBar in an animated search bar with similar functionality to UISearchBar'
 
   s.description      = <<-DESC
@@ -23,6 +23,7 @@ The UIAnimatedSearchBar is similar to the standard UISearchBar but with the adde
   s.social_media_url = 'https://twitter.com/_KyleBurkholder'
 
   s.ios.deployment_target = '11.0'
+  s.swift_version = '4.0'
 
   s.source_files = 'UIAnimatedSearchBar/Classes/**/*'
 
