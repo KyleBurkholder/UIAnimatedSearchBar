@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UIAnimatedSearchBar'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'UIAnimatedSearchBar in an animated search bar with similar functionality to UISearchBar'
 
   s.description      = <<-DESC

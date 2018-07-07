@@ -49,7 +49,7 @@ Email: kburkho@gmail.com
 Twitter: [_KyleBurkholder](https://twitter.com/_KyleBurkholder)  
 Follow me on Twitter. I'd love to see what other ios developers are working on.
 
-## Donation?
+## Donations
 
 I'm a self taught ios programmer and if you want to see more things like this feel free to buy me a cup of coffee, or two. ;)
 
