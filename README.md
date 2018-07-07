@@ -7,6 +7,8 @@
 
 ## Description
 
+![Alt Text](https://media.giphy.com/media/fHingtLkG7v9wZZ2YW/giphy.gif)
+
 The UIAnimatedSearchBar is similar to the standard UISearchBar but with the added animation of the search glass. I have tried to add the same functionality that UISearchBar comes with. The cancel button and the bookmark button can both be added just like UISearchBar. Additionally there is a UIAnimatedSearchBarDelegate that mirrors the same functionality that UISearchBarDelegate offers.
 
 ## Example
