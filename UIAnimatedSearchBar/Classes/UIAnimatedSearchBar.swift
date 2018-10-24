@@ -96,11 +96,11 @@ public class UIAnimatedSearchBar: UIView
             {
                 let animatedSearchBarBundle = Bundle(for: UIAnimatedSearchBar.self)
                 print(animatedSearchBarBundle)
-                let button = UIButton(type: UIButtonType.system)
+                let button = UIButton(type: UIButton.ButtonType.system)
                 button.frame = CGRect(x: 0, y: 0, width: 21, height: 21)
                 let image = UIImage(named: "bookmarkIcon", in: animatedSearchBarBundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
                 button.setImage(image, for: .normal)
-                button.addTarget(self, action: #selector(bookmarkButtonClicked), for: UIControlEvents.touchUpInside)
+                button.addTarget(self, action: #selector(bookmarkButtonClicked), for: UIControl.Event.touchUpInside)
                 searchTextField.rightView = button
             } else
             {
@@ -306,7 +306,7 @@ public class UIAnimatedSearchBar: UIView
         searchTextField.accessibilityLabel = "searchTextField"
         searchTextField.font = Constants.fontMetric.scaledFont(for: Constants.systemFontLargeButton)
         searchTextField.adjustsFontForContentSizeCategory = true
-        searchTextField.addTarget(self, action: #selector(textFieldWillChange(_:)), for: UIControlEvents.editingChanged)
+        searchTextField.addTarget(self, action: #selector(textFieldWillChange(_:)), for: UIControl.Event.editingChanged)
         
         //let textHeight = NSLayoutConstraint(item: searchTextField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 21.0)
         let textLeading = NSLayoutConstraint(item: searchWindow, attribute: .leading, relatedBy: .equal, toItem: searchTextField, attribute: .leading, multiplier: 1.0, constant: Constants.textFieldLeadingConstantNotEditing)
@@ -349,7 +349,7 @@ public class UIAnimatedSearchBar: UIView
         cancelButton.titleLabel?.font = Constants.fontMetric.scaledFont(for: Constants.systemFontLargeButton)
         cancelButton.titleLabel?.adjustsFontForContentSizeCategory = true
         cancelButton.tintColor = tintColor.withAlphaComponent(0.95)
-        cancelButton.addTarget(self, action: #selector(cancelButtonClicked), for: UIControlEvents.touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelButtonClicked), for: UIControl.Event.touchUpInside)
         self.addSubview(cancelButton)
         
         cancelButton.setContentCompressionResistancePriority(UILayoutPriority.init(rawValue: 752), for: .horizontal)

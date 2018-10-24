@@ -128,7 +128,7 @@ class GlassCursor: UIView
         glassLayer.path = glassPath.cgPath
         glassLayer.fillColor = color.cgColor
         stemLayer.fillColor = color.cgColor
-        glassLayer.fillRule = kCAFillRuleEvenOdd
+        glassLayer.fillRule = CAShapeLayerFillRule.evenOdd
         spyGlassLayer.addSublayer(glassLayer)
         spyGlassLayer.addSublayer(stemLayer)
         self.layer.addSublayer(spyGlassLayer)
@@ -210,7 +210,7 @@ class GlassCursor: UIView
         rotationAnimationZ.toValue = CATransform3DMakeRotation(-CGFloat.pi/4, 0, 0, 1)
         rotationAnimationZ.duration = animationSpeed ?? AnimationConstanst.toGlassDuration
         rotationAnimationZ.isRemovedOnCompletion = false
-        rotationAnimationZ.fillMode = kCAFillModeForwards
+        rotationAnimationZ.fillMode = CAMediaTimingFillMode.forwards
         rotationAnimationZ.damping = AnimationConstanst.animationDamping
         rotationAnimationZ.mass = AnimationConstanst.animationMass
         rotationAnimationZ.stiffness = AnimationConstanst.animationStiffness
@@ -220,7 +220,7 @@ class GlassCursor: UIView
         cursorRotationAnimationZ.toValue = AnimationConstanst.cursorRotatedTransform
         cursorRotationAnimationZ.duration = animationSpeed ?? AnimationConstanst.toGlassDuration
         cursorRotationAnimationZ.isRemovedOnCompletion = false
-        cursorRotationAnimationZ.fillMode = kCAFillModeForwards
+        cursorRotationAnimationZ.fillMode = CAMediaTimingFillMode.forwards
         cursorRotationAnimationZ.damping = AnimationConstanst.animationDamping
         cursorRotationAnimationZ.mass = AnimationConstanst.animationMass
         cursorRotationAnimationZ.stiffness = AnimationConstanst.animationStiffness
@@ -242,7 +242,7 @@ class GlassCursor: UIView
         rotationAnimationZ.toValue = CATransform3DMakeRotation(CGFloat.pi/2.0, 0, 1, 0)
         rotationAnimationZ.duration = animationSpeed ?? AnimationConstanst.toCursorDuration
         rotationAnimationZ.isRemovedOnCompletion = false
-        rotationAnimationZ.fillMode = kCAFillModeForwards
+        rotationAnimationZ.fillMode = CAMediaTimingFillMode.forwards
         rotationAnimationZ.damping = AnimationConstanst.animationDamping
         rotationAnimationZ.mass = AnimationConstanst.animationMass
         rotationAnimationZ.stiffness = AnimationConstanst.animationStiffness
@@ -253,7 +253,7 @@ class GlassCursor: UIView
         cursorRotationAnimationZ.toValue = CATransform3DIdentity
         cursorRotationAnimationZ.duration = animationSpeed ?? AnimationConstanst.toCursorDuration
         cursorRotationAnimationZ.isRemovedOnCompletion = false
-        cursorRotationAnimationZ.fillMode = kCAFillModeForwards
+        cursorRotationAnimationZ.fillMode = CAMediaTimingFillMode.forwards
         cursorRotationAnimationZ.damping = AnimationConstanst.animationDamping
         cursorRotationAnimationZ.mass = AnimationConstanst.animationMass
         cursorRotationAnimationZ.stiffness = AnimationConstanst.animationStiffness
