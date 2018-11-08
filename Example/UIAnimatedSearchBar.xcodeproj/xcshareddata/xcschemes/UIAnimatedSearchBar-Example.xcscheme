@@ -22,7 +22,7 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "YES">
@@ -34,6 +34,20 @@
                ReferencedContainer = "container:UIAnimatedSearchBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "020670F020D5685C003394EA"
+               BuildableName = "UIAnimatedSearchBar_ExampleUITests.xctest"
+               BlueprintName = "UIAnimatedSearchBar_ExampleUITests"
+               ReferencedContainer = "container:UIAnimatedSearchBar.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,26 +56,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "UIAnimatedSearchBar_Tests.xctest"
-               BlueprintName = "UIAnimatedSearchBar_Tests"
-               ReferencedContainer = "container:UIAnimatedSearchBar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "020670F020D5685C003394EA"
-               BuildableName = "UIAnimatedSearchBar_ExampleUITests.xctest"
-               BlueprintName = "UIAnimatedSearchBar_ExampleUITests"
-               ReferencedContainer = "container:UIAnimatedSearchBar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference

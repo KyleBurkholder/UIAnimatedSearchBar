@@ -206,6 +206,13 @@ public class UIAnimatedSearchBar: UIView
     
     private var iconXConstraint: NSLayoutConstraint?
     
+    private var cursorRect: CGRect {
+        let textPosition = searchTextField.beginningOfDocument
+        let cursorRect = searchTextField.caretRect(for: textPosition)
+        print("cursorRect = \(cursorRect)")
+        return cursorRect
+    }
+    
     private var textFieldXConstraint: NSLayoutConstraint?
     
     private var searchWindowTrailingConstraint: NSLayoutConstraint?
@@ -213,6 +220,11 @@ public class UIAnimatedSearchBar: UIView
     private var cancelButtonTrailingConstraint: NSLayoutConstraint?
     
     private var savedCursorConstraintConstant: CGFloat
+    
+    private var iconXConstantNotEditing: CGFloat
+    {
+        return -animatedIcon.bounds.width/2
+    }
     
     private var CursorConstraintOutOfDate = false
     
@@ -227,8 +239,6 @@ public class UIAnimatedSearchBar: UIView
         static let textFieldLeadingConstantEditing: CGFloat = -15.0
         
         static let textFieldLeadingConstantNotEditing: CGFloat = -25.0 //Was -23.0
-        
-        static let iconXConstantNotEditing: CGFloat = -9.0 //Was -7.0
         
         static let iconXOffsetFromCursorOriginX: CGFloat = 1.0
         
@@ -247,7 +257,8 @@ public class UIAnimatedSearchBar: UIView
     {
         searchWindow = SearchBackgroundView(color: Constants.defaultBackgroundColor)
         searchTextField = UITextField()
-        animatedIcon = GlassCursor(color: .black)
+        let startCursorRect = searchTextField.caretRect(for: searchTextField.beginningOfDocument)
+        animatedIcon = GlassCursor(color: .black, cursorRect: startCursorRect)
         savedCursorConstraintConstant = Constants.iconXOffsetFromCursorOriginX
         super.init(frame: frame)
         setupSearchBarLayout()
@@ -257,7 +268,8 @@ public class UIAnimatedSearchBar: UIView
     {
         searchWindow = SearchBackgroundView(color: Constants.defaultBackgroundColor)
         searchTextField = UITextField()
-        animatedIcon = GlassCursor(color: .black)
+        let startCursorRect = searchTextField.caretRect(for: searchTextField.beginningOfDocument)
+        animatedIcon = GlassCursor(color: .black, cursorRect: startCursorRect)
         savedCursorConstraintConstant = Constants.iconXOffsetFromCursorOriginX
         super.init(coder: aDecoder)
         setupSearchBarLayout()
@@ -273,19 +285,28 @@ public class UIAnimatedSearchBar: UIView
         
         setupAnimatedIcon(animatedIcon, toView: searchTextField)
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(mainViewTapped(_:)))
+        self.addGestureRecognizer(tapRecognizer)
+        
+        
         self.accessibilityLabel = "UIAnimatedSearchBar"
         
+    }
+    
+    @objc private func mainViewTapped(_ gestureRecognizer: UIGestureRecognizer)
+    {
+        searchTextField.becomeFirstResponder()
     }
     
     private func setupSearchWindow(_ searchWindow: UIView)
     {
         searchWindow.isOpaque = false
         self.addSubview(searchWindow)
-        
         let leading = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: searchWindow, attribute: .leading, multiplier: 1.0, constant: -8.0)
         let trailing = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: searchWindow, attribute: .trailing, multiplier: 1.0, constant: 8.0)
         trailing.priority = .defaultHigh
         let trailingSuggestion = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .greaterThanOrEqual, toItem: searchWindow, attribute: .trailing, multiplier: 1.0, constant: 8.0)
+        trailingSuggestion.priority = UILayoutPriority(rawValue: 999)
         let top = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: searchWindow, attribute: .top, multiplier: 1.0, constant: -10.0)
         let bottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: searchWindow, attribute: .bottom, multiplier: 1.0, constant: 10.0)
         let searchWindowConstraints = [leading, trailing, trailingSuggestion, top, bottom]
@@ -321,19 +342,18 @@ public class UIAnimatedSearchBar: UIView
     
     private func setupAnimatedIcon(_ animatedIcon: GlassCursor, toView searchTextField: UITextField)
     {
-        
+        animatedIcon.cursorRect = cursorRect
         animatedIcon.currentState = .glass
         animatedIcon.attachedTextField = searchTextField
-        //print(tintColor)
         animatedIcon.color = searchTextField.tintColor.withAlphaComponent(0.95)
         animatedIcon.isUserInteractionEnabled = false
 
         searchTextField.addSubview(animatedIcon)
         
-        let iconHeight = NSLayoutConstraint(item: animatedIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 33)
-        let iconWidth = NSLayoutConstraint(item: animatedIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 34)
-        let iconMidx = NSLayoutConstraint(item: animatedIcon, attribute: .centerX, relatedBy: .equal, toItem: searchTextField, attribute: .leading, multiplier: 1.0, constant: Constants.iconXConstantNotEditing)
-        let iconMidy = NSLayoutConstraint(item: animatedIcon, attribute: .centerY, relatedBy: .equal, toItem: searchTextField, attribute: .firstBaseline, multiplier: 1.0, constant: -6.0)
+        let iconHeight = NSLayoutConstraint(item: animatedIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: animatedIcon.bounds.height)
+        let iconWidth = NSLayoutConstraint(item: animatedIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: animatedIcon.bounds.width)
+        let iconMidx = NSLayoutConstraint(item: animatedIcon, attribute: .centerX, relatedBy: .equal, toItem: searchTextField, attribute: .leading, multiplier: 1.0, constant: iconXConstantNotEditing)
+        let iconMidy = NSLayoutConstraint(item: animatedIcon, attribute: .top, relatedBy: .equal, toItem: searchTextField, attribute: .top, multiplier: 1.0, constant: 0.0)
         let iconConstraints = [iconMidx, iconMidy, iconWidth, iconHeight]
         NSLayoutConstraint.activate(iconConstraints)
         animatedIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -440,7 +460,8 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
     {
         delegate?.searchBarTextDidEndEditing?(self)
         animatedIcon.rotateToGlass()
-        iconXConstraint?.constant = Constants.iconXConstantNotEditing
+        print("iconXConstantNotEditing = \(iconXConstantNotEditing)")
+        iconXConstraint?.constant = iconXConstantNotEditing
         textFieldXConstraint?.constant = Constants.textFieldLeadingConstantNotEditing
         cancelButton?.isEnabled = false
         UIView.animate(withDuration: animationSpeed ?? Constants.defaultAnimationSpeed)

@@ -11,7 +11,7 @@ import UIKit
 
 class GlassCursor: UIView
 {
-    struct AnimationConstanst
+    struct AnimationConstant
     {
         static let toGlassDuration: Double = 0.5
         
@@ -67,15 +67,19 @@ class GlassCursor: UIView
     }
     
     var animationSpeed: Double?
-
     
     var currentState: State = .cursor
     
-    init(color: UIColor)
+    var cursorRect: CGRect
+    
+    init(color: UIColor, cursorRect rect: CGRect)
     {
         //let newFrame = CGRect(x: -15.5 + point.x, y: -6.5 + point.y, width: 34, height: 33)
-        let newFrame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        let newFrame = CGRect(x: 0, y: 0, width: rect.size.height, height: rect.size.height)
+        print(newFrame)
+        
         self.color = color
+        self.cursorRect = rect
         super.init(frame: newFrame)
         self.addGlassLayer()
         self.addCursorLayer()
@@ -110,14 +114,15 @@ class GlassCursor: UIView
         let glassLayer = CAShapeLayer()
         let glassPath = UIBezierPath()
         let stemLayer = CAShapeLayer()
-        let stemPath = UIBezierPath(roundedRect: CGRect(x: 16, y: 6, width: 2, height: 21), cornerRadius: 1)
-        let mainGlass = UIBezierPath(ovalIn: CGRect(x: 11, y: 6, width: 12, height: 12))
-        let mainHole = UIBezierPath(ovalIn: CGRect(x: 12.5, y: 7.5, width: 9, height: 9))
+        let stemPath = UIBezierPath(roundedRect: CGRect(x: bounds.width/2.0 - cursorRect.size.width/2.0, y: 0, width: cursorRect.size.width, height: cursorRect.size.height), cornerRadius: 1)
+        let mainGlass = UIBezierPath(ovalIn: CGRect(x: bounds.width/2.0 - (cursorRect.size.height * 3/5)/2, y: 0, width: cursorRect.size.height * 3/5, height: cursorRect.size.height * 3/5))
+        let mainHole = UIBezierPath(ovalIn: CGRect(x: bounds.width/2.0 - (cursorRect.size.height * 9/20)/2, y: cursorRect.size.height * 1.5/20, width: cursorRect.size.height * 9/20, height: cursorRect.size.height * 9/20))
+        
         let stemMask = UIBezierPath()
-        stemMask.move(to: CGPoint(x: 11, y: 12))
-        stemMask.addArc(withCenter: CGPoint(x: 17, y: 12), radius: 6, startAngle: CGFloat.pi, endAngle: 2.0 * CGFloat.pi, clockwise: false)
-        stemMask.addLine(to: CGPoint(x: 23, y: 27))
-        stemMask.addLine(to: CGPoint(x: 11, y: 27))
+        stemMask.move(to: CGPoint(x: bounds.width/2.0 - (cursorRect.size.height * 3/5)/2, y: cursorRect.size.height * 3/5))
+        stemMask.addArc(withCenter: CGPoint(x: bounds.width/2.0, y: (cursorRect.size.height * 3/5)/2), radius: (cursorRect.size.height * 9/20)/2, startAngle: CGFloat.pi, endAngle: 2.0 * CGFloat.pi, clockwise: false)
+        stemMask.addLine(to: CGPoint(x: bounds.width/2.0 + (cursorRect.size.height * 9/20)/2, y: bounds.height))
+        stemMask.addLine(to: CGPoint(x: bounds.width/2.0 - (cursorRect.size.height * 9/20)/2, y: bounds.height))
         stemMask.close()
         let stemLayerMask = CAShapeLayer()
         stemLayerMask.path = stemMask.cgPath
@@ -141,21 +146,23 @@ class GlassCursor: UIView
         let glassShapePath = UIBezierPath()
         let glassMainLayer = CAShapeLayer()
         let bottomStem = UIBezierPath()
-        bottomStem.move(to: CGPoint(x: 16, y: 16.5))
-        bottomStem.addLine(to: CGPoint(x: 16, y: 26))
-        bottomStem.addArc(withCenter: CGPoint(x: 17, y: 26), radius: 1, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2.0, clockwise: false)
-        bottomStem.addLine(to: CGPoint(x: 18, y: 16.5))
+        let startXLocation = bounds.width/2.0 - cursorRect.size.width/2.0
+        
+        bottomStem.move(to: CGPoint(x: startXLocation, y: cursorRect.size.height * 3/5 - (cursorRect.size.height * 3/5 - cursorRect.size.height * 9/20)/2))
+        bottomStem.addLine(to: CGPoint(x: startXLocation, y: cursorRect.size.height - 1))
+        bottomStem.addArc(withCenter: CGPoint(x: bounds.width/2.0, y: cursorRect.size.height - 1), radius: 1, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2.0, clockwise: false)
+        bottomStem.addLine(to: CGPoint(x: bounds.width/2.0 + cursorRect.size.width/2.0, y: cursorRect.size.height * 3/5 - (cursorRect.size.height * 3/5 - cursorRect.size.height * 9/20)/4))
+        
         bottomStem.close()
+        let topStem = UIBezierPath(roundedRect: CGRect(x: startXLocation, y: 0, width: cursorRect.width, height: 1.5), cornerRadius: 1)
         
-        let topStem = UIBezierPath(roundedRect: CGRect(x: 16, y: 6, width: 2, height: 1.5), cornerRadius: 1)
-        
-        let firstSegment = UIBezierPath(rect: CGRect(x: 16, y: 7, width: 2, height: 1))
-        let secondSegment = UIBezierPath(rect: CGRect(x: 16, y: 8, width: 2, height: 1))
-        let thirdSegment = UIBezierPath(rect: CGRect(x: 16, y: 9, width: 2, height: 1))
-        let forthSegment = UIBezierPath(rect: CGRect(x: 16, y: 10, width: 2, height: 4))
-        let fifthSegment = UIBezierPath(rect: CGRect(x: 16, y: 14, width: 2, height: 1))
-        let sixSegment = UIBezierPath(rect: CGRect(x: 16, y: 15, width: 2, height: 1))
-        let seventhSegment = UIBezierPath(rect: CGRect(x: 16, y: 16, width: 2, height: 1))
+        let firstSegment = UIBezierPath(rect: CGRect(x: startXLocation, y: (cursorRect.size.height * 3/5)/12, width: cursorRect.width, height: cursorRect.size.height/18.6666))
+        let secondSegment = UIBezierPath(rect: CGRect(x: startXLocation, y: 2 * (cursorRect.size.height * 3/5)/12, width: cursorRect.width, height: cursorRect.size.height/18.6666))
+        let thirdSegment = UIBezierPath(rect: CGRect(x: startXLocation, y: 3 * (cursorRect.size.height * 3/5)/12, width: cursorRect.width, height: cursorRect.size.height/18.6666))
+        let forthSegment = UIBezierPath(rect: CGRect(x: startXLocation, y: 4 * (cursorRect.size.height * 3/5)/12, width: cursorRect.width, height: cursorRect.size.height * 4/18.6666))
+        let fifthSegment = UIBezierPath(rect: CGRect(x: startXLocation, y: 8 * (cursorRect.size.height * 3/5)/12, width: cursorRect.width, height: cursorRect.size.height/18.6666))
+        let sixSegment = UIBezierPath(rect: CGRect(x: startXLocation, y: 9 * (cursorRect.size.height * 3/5)/12, width: cursorRect.width, height: cursorRect.size.height/18.6666))
+        let seventhSegment = UIBezierPath(rect: CGRect(x: startXLocation, y: 10 * (cursorRect.size.height * 3/5)/12, width: cursorRect.width, height: cursorRect.size.height/18.6666))
         for slices in 1...4
         {
             let currentLayer = CAShapeLayer()
@@ -164,22 +171,22 @@ class GlassCursor: UIView
             switch slices
             {
             case 1:
-                currentLayer.transform = CATransform3DMakeTranslation(0, 0, -5)
-                positiveCurrentLayer.transform = CATransform3DMakeTranslation(0, 0, 5)
+                currentLayer.transform = CATransform3DMakeTranslation(0, 0, -(cursorRect.size.height * 3/5 + cursorRect.size.height * 9/20)/4)
+                positiveCurrentLayer.transform = CATransform3DMakeTranslation(0, 0, (cursorRect.size.height * 3/5 + cursorRect.size.height * 9/20)/4)
                 currentPath.append(forthSegment)
             case 2:
-                currentLayer.transform = CATransform3DMakeTranslation(0, 0, -4.5)
-                positiveCurrentLayer.transform = CATransform3DMakeTranslation(0, 0, 4.5)
+                currentLayer.transform = CATransform3DMakeTranslation(0, 0, -(cursorRect.size.height * 3/5 + cursorRect.size.height * 9/20)*4/5/4)
+                positiveCurrentLayer.transform = CATransform3DMakeTranslation(0, 0, (cursorRect.size.height * 3/5 + cursorRect.size.height * 9/20)*4/5/4)
                 currentPath.append(thirdSegment)
                 currentPath.append(fifthSegment)
             case 3:
-                currentLayer.transform = CATransform3DMakeTranslation(0, 0, -4)
-                positiveCurrentLayer.transform = CATransform3DMakeTranslation(0, 0, 4)
+                currentLayer.transform = CATransform3DMakeTranslation(0, 0, -(cursorRect.size.height * 3/5 + cursorRect.size.height * 9/20)*3/5/4)
+                positiveCurrentLayer.transform = CATransform3DMakeTranslation(0, 0, (cursorRect.size.height * 3/5 + cursorRect.size.height * 9/20)*3/5/4)
                 currentPath.append(secondSegment)
                 currentPath.append(sixSegment)
             case 4:
-                currentLayer.transform = CATransform3DMakeTranslation(0, 0, -3)
-                positiveCurrentLayer.transform = CATransform3DMakeTranslation(0, 0, 3)
+                currentLayer.transform = CATransform3DMakeTranslation(0, 0, -(cursorRect.size.height * 3/5 + cursorRect.size.height * 9/20)*2/5/4)
+                positiveCurrentLayer.transform = CATransform3DMakeTranslation(0, 0, (cursorRect.size.height * 3/5 + cursorRect.size.height * 9/20)*2/5/4)
                 currentPath.append(firstSegment)
                 currentPath.append(seventhSegment)
             default:
@@ -208,25 +215,25 @@ class GlassCursor: UIView
         let rotationAnimationZ = CASpringAnimation(keyPath: "transform")
         rotationAnimationZ.fromValue = CATransform3DMakeRotation(CGFloat.pi/2.0, 0, 1, 0)
         rotationAnimationZ.toValue = CATransform3DMakeRotation(-CGFloat.pi/4, 0, 0, 1)
-        rotationAnimationZ.duration = animationSpeed ?? AnimationConstanst.toGlassDuration
+        rotationAnimationZ.duration = animationSpeed ?? AnimationConstant.toGlassDuration
         rotationAnimationZ.isRemovedOnCompletion = false
         rotationAnimationZ.fillMode = CAMediaTimingFillMode.forwards
-        rotationAnimationZ.damping = AnimationConstanst.animationDamping
-        rotationAnimationZ.mass = AnimationConstanst.animationMass
-        rotationAnimationZ.stiffness = AnimationConstanst.animationStiffness
+        rotationAnimationZ.damping = AnimationConstant.animationDamping
+        rotationAnimationZ.mass = AnimationConstant.animationMass
+        rotationAnimationZ.stiffness = AnimationConstant.animationStiffness
         spyGlassLayer.add(rotationAnimationZ, forKey: nil)
         
         let cursorRotationAnimationZ = CASpringAnimation(keyPath: "transform")
-        cursorRotationAnimationZ.toValue = AnimationConstanst.cursorRotatedTransform
-        cursorRotationAnimationZ.duration = animationSpeed ?? AnimationConstanst.toGlassDuration
+        cursorRotationAnimationZ.toValue = AnimationConstant.cursorRotatedTransform
+        cursorRotationAnimationZ.duration = animationSpeed ?? AnimationConstant.toGlassDuration
         cursorRotationAnimationZ.isRemovedOnCompletion = false
         cursorRotationAnimationZ.fillMode = CAMediaTimingFillMode.forwards
-        cursorRotationAnimationZ.damping = AnimationConstanst.animationDamping
-        cursorRotationAnimationZ.mass = AnimationConstanst.animationMass
-        cursorRotationAnimationZ.stiffness = AnimationConstanst.animationStiffness
+        cursorRotationAnimationZ.damping = AnimationConstant.animationDamping
+        cursorRotationAnimationZ.mass = AnimationConstant.animationMass
+        cursorRotationAnimationZ.stiffness = AnimationConstant.animationStiffness
         cursorLayer.add(cursorRotationAnimationZ, forKey: nil)
         
-        Timer.scheduledTimer(withTimeInterval: animationSpeed ?? AnimationConstanst.toGlassDuration, repeats: false)
+        Timer.scheduledTimer(withTimeInterval: animationSpeed ?? AnimationConstant.toGlassDuration, repeats: false)
         {
             _ in
             self.setGlass()
@@ -240,26 +247,26 @@ class GlassCursor: UIView
         let rotationAnimationZ = CASpringAnimation(keyPath: "transform")
         rotationAnimationZ.fromValue = CATransform3DMakeRotation(-CGFloat.pi/4, 0, 0, 1)
         rotationAnimationZ.toValue = CATransform3DMakeRotation(CGFloat.pi/2.0, 0, 1, 0)
-        rotationAnimationZ.duration = animationSpeed ?? AnimationConstanst.toCursorDuration
+        rotationAnimationZ.duration = animationSpeed ?? AnimationConstant.toCursorDuration
         rotationAnimationZ.isRemovedOnCompletion = false
         rotationAnimationZ.fillMode = CAMediaTimingFillMode.forwards
-        rotationAnimationZ.damping = AnimationConstanst.animationDamping
-        rotationAnimationZ.mass = AnimationConstanst.animationMass
-        rotationAnimationZ.stiffness = AnimationConstanst.animationStiffness
+        rotationAnimationZ.damping = AnimationConstant.animationDamping
+        rotationAnimationZ.mass = AnimationConstant.animationMass
+        rotationAnimationZ.stiffness = AnimationConstant.animationStiffness
         spyGlassLayer.add(rotationAnimationZ, forKey: nil)
     
         let cursorRotationAnimationZ = CASpringAnimation(keyPath: "transform")
-        cursorRotationAnimationZ.fromValue = AnimationConstanst.cursorRotatedTransform
+        cursorRotationAnimationZ.fromValue = AnimationConstant.cursorRotatedTransform
         cursorRotationAnimationZ.toValue = CATransform3DIdentity
-        cursorRotationAnimationZ.duration = animationSpeed ?? AnimationConstanst.toCursorDuration
+        cursorRotationAnimationZ.duration = animationSpeed ?? AnimationConstant.toCursorDuration
         cursorRotationAnimationZ.isRemovedOnCompletion = false
         cursorRotationAnimationZ.fillMode = CAMediaTimingFillMode.forwards
-        cursorRotationAnimationZ.damping = AnimationConstanst.animationDamping
-        cursorRotationAnimationZ.mass = AnimationConstanst.animationMass
-        cursorRotationAnimationZ.stiffness = AnimationConstanst.animationStiffness
+        cursorRotationAnimationZ.damping = AnimationConstant.animationDamping
+        cursorRotationAnimationZ.mass = AnimationConstant.animationMass
+        cursorRotationAnimationZ.stiffness = AnimationConstant.animationStiffness
         cursorLayer.add(cursorRotationAnimationZ, forKey: nil)
         
-        Timer.scheduledTimer(withTimeInterval: animationSpeed ?? AnimationConstanst.toCursorDuration, repeats: false)
+        Timer.scheduledTimer(withTimeInterval: animationSpeed ?? AnimationConstant.toCursorDuration, repeats: false)
         {
             _ in
             self.setCursor()
