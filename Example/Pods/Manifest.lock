@@ -1,0 +1,54 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - KIF (3.7.3):
+    - KIF/Core (= 3.7.3)
+  - KIF-Quick (1.1.0):
+    - KIF (~> 3.0)
+    - Quick (~> 1.0)
+  - KIF/Core (3.7.3)
+  - Nimble (7.0.3)
+  - Nimble-Snapshots (6.3.0):
+    - Nimble-Snapshots/Core (= 6.3.0)
+  - Nimble-Snapshots/Core (6.3.0):
+    - FBSnapshotTestCase (~> 2.0)
+    - Nimble (~> 7.0)
+  - Quick (1.2.0)
+  - UIAnimatedSearchBar (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase (~> 2.1.4)
+  - KIF-Quick
+  - Nimble (~> 7.0.2)
+  - Nimble-Snapshots (~> 6.3.0)
+  - Quick (~> 1.2.0)
+  - UIAnimatedSearchBar (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FBSnapshotTestCase
+    - KIF
+    - KIF-Quick
+    - Nimble
+    - Nimble-Snapshots
+    - Quick
+
+EXTERNAL SOURCES:
+  UIAnimatedSearchBar:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  KIF: 4c23b5d24dba24d3cb6dbb9c7d325b31e526ba4a
+  KIF-Quick: da968bbfad615fd96c0d5eb4d8fd484ecdc26814
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  UIAnimatedSearchBar: 283172578c2aeb854561c0903aad308f7d9124a7
+
+PODFILE CHECKSUM: a9079de7cb1ac3fac77e8bf136ff9bc7dd48813d
+
+COCOAPODS: 1.5.3
