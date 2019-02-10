@@ -303,12 +303,16 @@ public class UIAnimatedSearchBar: UIView
         searchWindow.isOpaque = false
         self.addSubview(searchWindow)
         let leading = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: searchWindow, attribute: .leading, multiplier: 1.0, constant: -8.0)
+        leading.identifier = "search window leading to self"
         let trailing = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: searchWindow, attribute: .trailing, multiplier: 1.0, constant: 8.0)
+        trailing.identifier = "search window trailing to self"
         trailing.priority = .defaultHigh
         let trailingSuggestion = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .greaterThanOrEqual, toItem: searchWindow, attribute: .trailing, multiplier: 1.0, constant: 8.0)
         trailingSuggestion.priority = UILayoutPriority(rawValue: 999)
         let top = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: searchWindow, attribute: .top, multiplier: 1.0, constant: -10.0)
+        top.identifier = "search window top to self"
         let bottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: searchWindow, attribute: .bottom, multiplier: 1.0, constant: 10.0)
+        bottom.identifier = "search window bottom to self"
         let searchWindowConstraints = [leading, trailing, trailingSuggestion, top, bottom]
         NSLayoutConstraint.activate(searchWindowConstraints)
         searchWindow.translatesAutoresizingMaskIntoConstraints = false
@@ -331,9 +335,13 @@ public class UIAnimatedSearchBar: UIView
         
         //let textHeight = NSLayoutConstraint(item: searchTextField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 21.0)
         let textLeading = NSLayoutConstraint(item: searchWindow, attribute: .leading, relatedBy: .equal, toItem: searchTextField, attribute: .leading, multiplier: 1.0, constant: Constants.textFieldLeadingConstantNotEditing)
+        textLeading.identifier = "textField to searchWindow leading"
         let textTrailing = NSLayoutConstraint(item: searchWindow, attribute: .trailing, relatedBy: .equal, toItem: searchTextField, attribute: .trailing, multiplier: 1.0, constant: 8.0)
+        textTrailing.identifier = "textField to searchWindow trailing"
         let textTop = NSLayoutConstraint(item: searchWindow, attribute: .top, relatedBy: .equal, toItem: searchTextField, attribute: .top, multiplier: 1.0, constant: -7.0)
+        textTop.identifier = "textField to searchWindow top"
         let textBottom = NSLayoutConstraint(item: searchWindow, attribute: .bottom, relatedBy: .equal, toItem: searchTextField, attribute: .bottom, multiplier: 1.0, constant: 8.0)
+        textBottom.identifier = "textField to searchWindow bottom"
         let searchTextViewConstraints = [textLeading, textTrailing, textTop, textBottom]
         NSLayoutConstraint.activate(searchTextViewConstraints)
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
