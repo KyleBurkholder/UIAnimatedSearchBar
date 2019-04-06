@@ -27,6 +27,8 @@ import UIKit
     @objc optional func searchBarCancelButtonClicked(_ searchBar: UIAnimatedSearchBar)
 
     @objc optional func searchBarSearchButtonClicked(_ searchBar: UIAnimatedSearchBar)
+    
+    @objc optional func searchBarClearButtonWasPressed(_ searchBar: UIAnimatedSearchBar)
 
     //@objc optional func searchBarResultsListButtonClicked(_ searchBar: UIAnimatedSearchBar)
 
@@ -491,5 +493,11 @@ extension UIAnimatedSearchBar: UITextFieldDelegate
         searchTextField.rightViewMode = .always
         self.layoutIfNeeded()
         searchTextField.rightViewMode = .unlessEditing
+    }
+    
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool
+    {
+        delegate?.searchBarClearButtonWasPressed?(self)
+        return true
     }
 }
