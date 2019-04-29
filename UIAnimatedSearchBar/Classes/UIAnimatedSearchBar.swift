@@ -66,7 +66,7 @@ public class UIAnimatedSearchBar: UIView
         }
     }
 
-    public var barTintColor: UIColor = Constants.defaultBackgroundColor
+    @IBInspectable public var barTintColor: UIColor = Constants.defaultBackgroundColor
     {
         didSet
         {
