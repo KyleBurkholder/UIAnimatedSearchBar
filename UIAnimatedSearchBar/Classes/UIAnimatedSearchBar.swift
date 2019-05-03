@@ -126,6 +126,16 @@ public class UIAnimatedSearchBar: UIView
         }
     }
     
+    public var returnKeyType: UIReturnKeyType
+    {
+        get {
+            return searchTextField.returnKeyType
+        }
+        set {
+            searchTextField.returnKeyType = newValue
+        }
+    }
+    
     public var cancelButton: UIButton?
     
     public var animationSpeed: Double?
@@ -331,8 +341,8 @@ public class UIAnimatedSearchBar: UIView
         searchTextField.clearButtonMode = .whileEditing
         searchTextField.rightViewMode = .unlessEditing
         searchTextField.accessibilityLabel = "searchTextField"
-        searchTextField.font = Constants.fontMetric.scaledFont(for: Constants.systemFontLargeButton)
-        searchTextField.adjustsFontForContentSizeCategory = true
+//        searchTextField.font = Constants.fontMetric.scaledFont(for: Constants.systemFontLargeButton)
+//        searchTextField.adjustsFontForContentSizeCategory = true
         searchTextField.addTarget(self, action: #selector(textFieldWillChange(_:)), for: UIControl.Event.editingChanged)
         
         //let textHeight = NSLayoutConstraint(item: searchTextField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 21.0)
