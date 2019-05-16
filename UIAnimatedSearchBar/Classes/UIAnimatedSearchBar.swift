@@ -338,6 +338,7 @@ public class UIAnimatedSearchBar: UIView
         searchTextField.tintColor = tintColor.withAlphaComponent(0.95)
         searchTextField.returnKeyType = .search
         searchTextField.autocorrectionType = .no
+        searchTextField.enablesReturnKeyAutomatically = true
         searchTextField.clearButtonMode = .whileEditing
         searchTextField.rightViewMode = .unlessEditing
         searchTextField.accessibilityLabel = "searchTextField"
